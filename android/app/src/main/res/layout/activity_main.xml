@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/page">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl">
+
+        <!-- Header -->
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="18dp">
+
+            <ImageView
+                android:src="@drawable/ic_app_logo"
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:contentDescription="NotifyBridge" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:paddingStart="12dp">
+
+                <TextView
+                    android:text="NotifyBridge"
+                    android:textColor="@color/text"
+                    android:textStyle="bold"
+                    android:textSize="24sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="مركز ربط الإشعارات • V5.0"
+                    android:textColor="@color/muted"
+                    android:textSize="13sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- System Status -->
+        <LinearLayout
+            android:background="@drawable/bg_panel"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="حالة النظام"
+                android:textColor="@color/text"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/status"
+                android:text="جاري فحص الصلاحية..."
+                android:textColor="@color/muted"
+                android:paddingTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/lastResult"
+                android:text="لا توجد عملية إرسال بعد"
+                android:textColor="@color/muted"
+                android:paddingTop="6dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <!-- Connection Settings -->
+        <TextView
+            android:text="إعدادات الاتصال"
+            android:textColor="@color/text"
+            android:textStyle="bold"
+            android:textSize="19sp"
+            android:paddingTop="22dp"
+            android:paddingBottom="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/server"
+            android:hint="https://example.com/api/push.php"
+            android:textColorHint="#91A7B5"
+            android:textColor="@color/text"
+            android:singleLine="true"
+            android:inputType="textUri"
+            android:background="@drawable/bg_field"
+            android:layout_width="match_parent"
+            android:layout_height="54dp" />
+
+        <EditText
+            android:id="@+id/key"
+            android:hint="API Key"
+            android:textColorHint="#91A7B5"
+            android:textColor="@color/text"
+            android:singleLine="true"
+            android:inputType="textPassword"
+            android:background="@drawable/bg_field"
+            android:layout_marginTop="9dp"
+            android:layout_width="match_parent"
+            android:layout_height="54dp" />
+
+        <Button
+            android:id="@+id/save"
+            android:text="حفظ الإعدادات"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:background="@drawable/bg_gold"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="54dp" />
+
+        <Button
+            android:id="@+id/test"
+            android:text="اختبار الاتصال بالسيرفر"
+            android:textColor="@color/sky_dark"
+            android:textStyle="bold"
+            android:background="@drawable/bg_outline"
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="54dp" />
+
+        <Button
+            android:id="@+id/access"
+            android:text="صلاحية قراءة الإشعارات"
+            android:textColor="@color/sky_dark"
+            android:textStyle="bold"
+            android:background="@drawable/bg_outline"
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="54dp" />
+
+        <!-- Apps -->
+        <TextView
+            android:text="اختر التطبيقات"
+            android:textColor="@color/text"
+            android:textStyle="bold"
+            android:textSize="19sp"
+            android:paddingTop="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/selectedCount"
+            android:text="0 تطبيق محدد"
+            android:textColor="@color/sky_dark"
+            android:paddingTop="3dp"
+            android:paddingBottom="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/search"
+            android:hint="بحث باسم التطبيق..."
+            android:textColorHint="#91A7B5"
+            android:textColor="@color/text"
+            android:singleLine="true"
+            android:background="@drawable/bg_field"
+            android:layout_width="match_parent"
+            android:layout_height="52dp" />
+
+        <LinearLayout
+            android:id="@+id/apps"
+            android:orientation="vertical"
+            android:layout_marginTop="9dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Footer -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="26dp"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:text="جميع حقوق التطوير والتصميم : محمد القرعان"
+                android:textColor="@color/muted"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp">
+
+                <ImageButton
+                    android:id="@+id/facebook"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:layout_marginEnd="10dp"
+                    android:padding="11dp"
+                    android:src="@drawable/ic_facebook"
+                    android:background="@drawable/bg_social_button"
+                    android:contentDescription="Facebook @elqdes" />
+
+                <ImageButton
+                    android:id="@+id/instagram"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:padding="11dp"
+                    android:src="@drawable/ic_instagram"
+                    android:background="@drawable/bg_social_button"
+                    android:contentDescription="Instagram @elqdes" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
