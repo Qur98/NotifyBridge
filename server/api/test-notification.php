@@ -1,0 +1,5 @@
+<?php
+session_start();header('Content-Type: application/json; charset=utf-8');header('Cache-Control: no-store');
+if(empty($_SESSION['admin'])){http_response_code(401);echo json_encode(['ok'=>false,'error'=>'unauthorized']);exit;}
+if(($_SERVER['REQUEST_METHOD']??'GET')!=='POST'){http_response_code(405);echo json_encode(['ok'=>false,'error'=>'method_not_allowed']);exit;}
+try{require __DIR__.'/../config/db.php';$key='web-test-'.bin2hex(random_bytes(10));$s=$pdo->prepare('INSERT INTO notifications(device_id,app_package,app_name,title,message,notification_key,sent_at) VALUES(?,?,?,?,?,?,?)');$now=date('Y-m-d H:i:s');$s->execute(['web-control','com.notifybridge.web','NotifyBridge','اختبار إشعارات ناجح','هذا إشعار تجريبي من لوحة NotifyBridge V5.0.',$key,$now]);$pdo->exec("INSERT INTO apps(app_package,app_name,notification_count) VALUES('com.notifybridge.web','NotifyBridge',1) ON DUPLICATE KEY UPDATE last_seen=NOW(),notification_count=notification_count+1");echo json_encode(['ok'=>true,'id'=>$pdo->lastInsertId()],JSON_UNESCAPED_UNICODE);}catch(Throwable $e){http_response_code(500);echo json_encode(['ok'=>false,'error'=>'database_error'],JSON_UNESCAPED_UNICODE);}
